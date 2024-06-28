@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "38164806058",
+    "project_id": "experience-share-35b48",
+    "storage_bucket": "experience-share-35b48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38164806058:android:657ec9059840dfb7f0d3d3",
+        "android_client_info": {
+          "package_name": "com.example.gee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSjPLwoonzt_PWMTk-20wi-WUlCf2ueCE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
