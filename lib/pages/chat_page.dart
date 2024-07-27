@@ -14,17 +14,34 @@ class ChatsPage extends StatefulWidget {
 
 class _ChatsPageState extends State<ChatsPage> {
   late double _deviceHeight;
-  late double _devicewidth;
+  late double _deviceWidth;
 
   late AuthenticationProvider _auth;
   @override
   Widget build(BuildContext context) {
+    _deviceHeight = MediaQuery.of(context).size.height;
+    _deviceWidth = MediaQuery.of(context).size.width;
+    _auth = Provider.of<AuthenticationProvider>(context);
     return _buildUI();
   }
 
   Widget _buildUI() {
-    return Scaffold(
-      backgroundColor: Colors.red,
+    return Container(
+      padding: EdgeInsets.symmetric(
+        vertical: _deviceHeight * 0.03,
+        horizontal: _deviceWidth * 0.02,
+      ),
+      height: _deviceHeight *0.98,
+      width: _deviceWidth *0.97,
+      child:const Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+
+          
+        ],
+      ),
     );
   }
 }
