@@ -1,10 +1,9 @@
 import 'dart:io';
 
-//Packages
+// Packages
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
-
 
 const String USER_COLLECTION = "Users";
 
@@ -13,21 +12,19 @@ class CloudStorageService {
 
   CloudStorageService();
 
-  Future<String?> saveUserImageToStorage(
-      String uid, PlatformFile file) async {
+  Future<String?> saveUserImageToStorage(String uid, PlatformFile file) async {
     try {
       Reference ref =
           _storage.ref().child('images/users/$uid/profile.${file.extension}');
       UploadTask task = ref.putFile(
         File(file.path!),
       );
-      return await task.then(
-        (result) => result.ref.getDownloadURL(),
-      );
+      TaskSnapshot snapshot = await task;
+      return await snapshot.ref.getDownloadURL();
     } catch (e) {
-      print(e);
+      print("Error saving user image: $e");
+      return null;
     }
-    return null;
   }
 
   Future<String?> saveChatImageToStorage(
@@ -38,12 +35,11 @@ class CloudStorageService {
       UploadTask task = ref.putFile(
         File(file.path!),
       );
-      return await task.then(
-        (result) => result.ref.getDownloadURL(),
-      );
+      TaskSnapshot snapshot = await task;
+      return await snapshot.ref.getDownloadURL();
     } catch (e) {
-      print(e);
+      print("Error saving chat image: $e");
+      return null;
     }
-    return null;
   }
 }

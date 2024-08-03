@@ -25,9 +25,9 @@ class _RegisterPageState extends State<RegisterPage> {
   late double _deviceWidth;
 
   late AuthenticationProvider _auth;
-  late DatabaseServices _db;
+  late DatabaseService _db;
   late CloudStorageService _cloudStorage;
-  late NavigationServices _navigation;
+  late NavigationService _navigation;
 
   String? _email;
   String? _password;
@@ -39,9 +39,9 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     _auth = Provider.of<AuthenticationProvider>(context);
-    _db = GetIt.instance.get<DatabaseServices>();
+    _db = GetIt.instance.get<DatabaseService>();
     _cloudStorage = GetIt.instance.get<CloudStorageService>();
-    _navigation = GetIt.instance.get<NavigationServices>();
+    _navigation = GetIt.instance.get<NavigationService>();
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
     return _buildUI();
@@ -134,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
             CustomTextFormField(
               onSaved: (value) {
                 setState(() {
-                  _email = value!.trim();
+                  _email = value.trim();
                 });
               },
               regEx: r'^[^@]+@[^@]+\.[^@]+',
@@ -174,7 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   uid, _profileImage!);
             }
             await _db.createUser(uid, _email!, _name!, imageURL ?? '');
-            _navigation.NavigateToRoute('/home');
+            _navigation.navigateToRoute('/home');
           } else {
             print("Registration failed");
           }

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 
-class NavigationServices {
-  static GlobalKey<NavigatorState> navigatorKey =
+class NavigationService {
+  static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
 
   void removeAndNavigateToRoute(String route) {
     navigatorKey.currentState?.popAndPushNamed(route);
   }
 
-  void NavigateToRoute(String route) {
+  void navigateToRoute(String route) {
     navigatorKey.currentState?.pushNamed(route);
   }
 
-  void NavigateToPage(Widget page) {
+  void navigateToPage(Widget page) {
     navigatorKey.currentState?.push(
       MaterialPageRoute(
         builder: (BuildContext context) {
@@ -23,14 +22,11 @@ class NavigationServices {
     );
   }
 
-  void goBack() {
-    navigatorKey.currentState?.pop();
-    GetIt.instance.registerSingleton<NavigationServices>(
-      NavigationServices(),
-    );
+  String? getCurrentRoute() {
+    return ModalRoute.of(navigatorKey.currentState!.context)?.settings.name;
   }
 
-  getCurrentRoute() {}
-
-  // function that will allow us to go back to our pages
+  void goBack() {
+    navigatorKey.currentState?.pop();
+  }
 }

@@ -11,9 +11,9 @@ class SplashPage extends StatefulWidget {
   final VoidCallback onInitializationComplete;
 
   const SplashPage({
-    Key? key,
+    super.key,
     required this.onInitializationComplete,
-  }) : super(key: key);
+  });
 
   @override
   State<StatefulWidget> createState() {
@@ -70,8 +70,8 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void _registerServices() {
-    GetIt.instance.registerSingleton<NavigationServices>(
-      NavigationServices(),
+    GetIt.instance.registerSingleton<NavigationService>(
+      NavigationService(),
     );
     GetIt.instance.registerSingleton<MediaService>(
       MediaService(),
@@ -79,8 +79,8 @@ class _SplashPageState extends State<SplashPage> {
     GetIt.instance.registerSingleton<CloudStorageService>(
       CloudStorageService(),
     );
-    GetIt.instance.registerSingleton<DatabaseServices>(
-      DatabaseServices(),
+    GetIt.instance.registerSingleton<DatabaseService>(
+      DatabaseService(),
     );
   }
 }

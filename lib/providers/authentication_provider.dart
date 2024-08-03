@@ -7,19 +7,19 @@ import 'package:gee/models/chat_user.dart';
 // Services
 import '../services/database_services.dart';
 import '../services/navigation_services.dart';
-// Models
 
 class AuthenticationProvider extends ChangeNotifier {
   late final FirebaseAuth _auth;
-  late final NavigationServices _navigationService;
-  late final DatabaseServices _databaseService;
+  late final NavigationService _navigationService;
+  late final DatabaseService _databaseService;
 
   late ChatUser user;
 
   AuthenticationProvider() {
     _auth = FirebaseAuth.instance;
-    _navigationService = GetIt.instance.get<NavigationServices>();
-    _databaseService = GetIt.instance.get<DatabaseServices>();
+    _navigationService = GetIt.instance.get<NavigationService>();
+    _databaseService = GetIt.instance.get<DatabaseService>();
+    _auth.signOut();
 
     _auth.authStateChanges().listen((user) async {
       if (user != null) {

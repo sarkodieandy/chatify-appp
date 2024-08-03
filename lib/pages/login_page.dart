@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gee/pages/chat_page.dart';
 import 'package:gee/pages/home_page.dart';
 import 'package:gee/widgets/custom_input_fields.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   late double _deviceWidth;
 
   late AuthenticationProvider _auth;
-  late NavigationServices _navigation;
+  late NavigationService _navigation;
 
   final _loginFormKey = GlobalKey<FormState>();
 
@@ -39,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
     _auth = Provider.of<AuthenticationProvider>(context);
-    _navigation = GetIt.instance.get<NavigationServices>();
+    _navigation = GetIt.instance.get<NavigationService>();
     return _buildUI();
   }
 
@@ -103,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
             CustomTextFormField(
               onSaved: (value) {
                 setState(() {
-                  _email = value!.trim();
+                  _email = value.trim();
                 });
               },
               regEx: r'^[^@]+@[^@]+\.[^@]+',
@@ -146,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _registerAccountLink() {
     return GestureDetector(
-      onTap: () => _navigation.NavigateToRoute('/register'),
+      onTap: () => _navigation.navigateToRoute('/register'),
       child: const Text(
         'Don\'t have an account?',
         style: TextStyle(

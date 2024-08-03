@@ -49,6 +49,8 @@ dependencies:
   image_picker: ^1.1.2
   flutter_spinkit: ^5.2.1
   timeago: ^3.7.0
+  flutter_keyboard_visibility: ^6.0.0
+  flutter_keyboard_visibility_platform_interface: ^2.0.0
 
 dev_dependencies:
   flutter_test:

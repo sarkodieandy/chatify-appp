@@ -62,12 +62,12 @@ class RoundedImageFile extends StatelessWidget {
 class RoundedImageNetworkWithStatusIndicator extends RoundedImageNetwork {
   final bool isActive;
 
-  RoundedImageNetworkWithStatusIndicator({
-    required Key key,
-    required String imagePath,
-    required double size,
+  const RoundedImageNetworkWithStatusIndicator({
+    required super.key,
+    required super.imagePath,
+    required super.size,
     required this.isActive,
-  }) : super(key: key, imagePath: imagePath, size: size);
+  });
 
   @override
   Widget build(BuildContext context) {

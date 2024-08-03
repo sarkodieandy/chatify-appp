@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AiPage extends StatefulWidget {
+  const AiPage({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _AisPageState();
@@ -14,7 +16,7 @@ class _AisPageState extends State<AiPage> {
   }
 
   Widget _buildUI() {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.blue,
     );
   }
