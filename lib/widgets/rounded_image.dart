@@ -24,7 +24,7 @@ class RoundedImageNetwork extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(size),
         ),
-        color: Colors.black,
+        color: Colors.blue,
       ),
     );
   }
@@ -53,7 +53,7 @@ class RoundedImageFile extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(size),
         ),
-        color: Colors.black,
+        color: Colors.white,
       ),
     );
   }

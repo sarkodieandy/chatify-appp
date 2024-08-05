@@ -44,7 +44,7 @@ class MainApp extends StatelessWidget {
         title: 'Chatify',
         theme: ThemeData(
           dialogBackgroundColor: const Color.fromRGBO(36, 35, 49, 0.1),
-        scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 0.1),
+          scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 0.1),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: Color.fromRGBO(30, 29, 37, 1.0),
           ),
@@ -54,7 +54,6 @@ class MainApp extends StatelessWidget {
         routes: {
           '/login': (BuildContext context) => const LoginPage(),
           '/register': (BuildContext context) => const RegisterPage(),
-          
         },
       ),
     );

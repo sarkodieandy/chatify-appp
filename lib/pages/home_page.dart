@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gee/pages/ai_page.dart';
+import '../pages/chats_page.dart';
+import '../pages/Users_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,15 +13,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentPage = 0;
   final List<Widget> pages = [
-    Container(
-      color: Colors.red[300]!,
-    ),
-    Container(
-      color: Colors.pink[300]!,
-    ),
-    Container(
-      color: Colors.green[300]!,
-    ),
+    const ChatsPage(),
+    const AiPage(),
+    const UsersPage(),
   ];
 
   @override
@@ -36,7 +33,6 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             label: "Chat",
             icon: Icon(Icons.chat_bubble_sharp),
-            
           ),
           BottomNavigationBarItem(
             label: "Users",

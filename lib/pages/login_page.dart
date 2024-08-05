@@ -136,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
           _auth.loginUsingEmailAndPassword(_email!, _password!);
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => const HomePage()),
           );
         }
       },
