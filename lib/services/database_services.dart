@@ -65,7 +65,7 @@ class DatabaseService {
         .collection(CHAT_COLLECTION)
         .doc(chatID)
         .collection(MESSAGES_COLLECTION)
-        .orderBy("sent_time", descending: false)
+        .orderBy("sent_time", descending: true)
         .snapshots();
   }
 
@@ -83,8 +83,7 @@ class DatabaseService {
     }
   }
 
-  Future<void> updateChatData(
-      String chatID, Map<String, dynamic> data) async {
+  Future<void> updateChatData(String chatID, Map<String, dynamic> data) async {
     try {
       await _db.collection(CHAT_COLLECTION).doc(chatID).update(data);
     } catch (e) {
@@ -114,12 +113,11 @@ class DatabaseService {
 
   Future<DocumentReference?> createChat(Map<String, dynamic> data) async {
     try {
-      DocumentReference chat =
-          await _db.collection(CHAT_COLLECTION).add(data);
+      DocumentReference chat = await _db.collection(CHAT_COLLECTION).add(data);
       return chat;
     } catch (e) {
       print("Error creating chat: $e");
       return null;
     }
   }
-} 
+}

@@ -29,12 +29,12 @@ class _ChatsPageState extends State<ChatsPage> {
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
-    _auth = Provider.of<AuthenticationProvider>(context);
+    _auth = Provider.of<AuthenticationProvider>(context, listen: false);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ChatsPageProvider>(
           create: (_) => ChatsPageProvider(_auth),
-        )
+        ),
       ],
       child: _buildUI(),
     );
@@ -43,7 +43,7 @@ class _ChatsPageState extends State<ChatsPage> {
   Widget _buildUI() {
     return Builder(
       builder: (BuildContext _context) {
-        _pageProvider = context.watch<ChatsPageProvider>();
+        _pageProvider = Provider.of<ChatsPageProvider>(_context, listen: false);
         return Container(
           padding: EdgeInsets.symmetric(
             horizontal: _deviceWidth * 0.03,
@@ -66,7 +66,7 @@ class _ChatsPageState extends State<ChatsPage> {
                   },
                 ),
               ),
-              _chatTile(),
+              _chatsList(),
             ],
           ),
         );

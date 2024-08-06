@@ -1,6 +1,7 @@
 import 'dart:async';
 //package
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -25,11 +26,38 @@ class ChatsPageProvider extends ChangeNotifier {
     _db = GetIt.instance.get<DatabaseService>();
     getChats();
   }
+
   @override
   void dispose() {
     _chatsStream.cancel();
     super.dispose();
   }
 
-  void getChats() async {}
+  void getChats() async {
+    try {
+      _chatsStream =
+          _db.getChatsForUser(_auth.user.uid).listen((_snapshot) async {
+        chats = await Future.wait(
+          _snapshot.docs.map(
+            (_d) async {
+              Map<String, dynamic> _chatData =
+                  _d.data() as Map<String, dynamic>;
+              // return chat instances
+              return Chat(
+                uid: _d.id,
+                currentUserUid: _auth.user.uid,
+                members: [],
+                messages: [],
+                activity: _chatData["is_activity"],
+                group: _chatData["is_group"],
+              );
+            },
+          ),
+        );
+      });
+    } catch (e) {
+      print("Error getting Chats.");
+      print(e);
+    }
+  }
 }
